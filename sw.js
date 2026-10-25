@@ -1,35 +1,35 @@
 // Офлайн-режим: файлы сайта сохраняются в браузере, документы никуда не отправляются.
-const CACHE = 'raspishis-eecac27f96';
+const CACHE = 'raspishis-cb2d585306';
 const PRECACHE = [
-  "./",
-  "privacy.html",
-  "site.webmanifest",
-  "favicon.ico",
-  "icon-192.png",
-  "icon-512.png",
-  "assets/app.css",
-  "assets/app.js",
-  "assets/sw-register.js",
-  "assets/fonts/fonts.css",
-  "assets/vendor/pdf.min.js",
-  "assets/vendor/pdf.worker.min.js",
-  "assets/vendor/pdf-lib.min.js",
-  "assets/fonts/bad-script-400-cyrillic.woff2",
-  "assets/fonts/bad-script-400-latin.woff2",
-  "assets/fonts/caveat-600-cyrillic.woff2",
-  "assets/fonts/caveat-600-latin.woff2",
-  "assets/fonts/golos-text-400-cyrillic.woff2",
-  "assets/fonts/golos-text-400-latin.woff2",
-  "assets/fonts/golos-text-500-cyrillic.woff2",
-  "assets/fonts/golos-text-500-latin.woff2",
-  "assets/fonts/golos-text-600-cyrillic.woff2",
-  "assets/fonts/golos-text-600-latin.woff2",
-  "assets/fonts/golos-text-700-cyrillic.woff2",
-  "assets/fonts/golos-text-700-latin.woff2",
-  "assets/fonts/jetbrains-mono-500-cyrillic.woff2",
-  "assets/fonts/jetbrains-mono-500-latin.woff2",
-  "assets/fonts/marck-script-400-cyrillic.woff2",
-  "assets/fonts/marck-script-400-latin.woff2"
+  "/",
+  "/privacy.html",
+  "/site.webmanifest",
+  "/favicon.ico",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/assets/app.css",
+  "/assets/app.js",
+  "/assets/sw-register.js",
+  "/assets/fonts/fonts.css",
+  "/assets/vendor/pdf.min.js",
+  "/assets/vendor/pdf.worker.min.js",
+  "/assets/vendor/pdf-lib.min.js",
+  "/assets/fonts/bad-script-400-cyrillic.woff2",
+  "/assets/fonts/bad-script-400-latin.woff2",
+  "/assets/fonts/caveat-600-cyrillic.woff2",
+  "/assets/fonts/caveat-600-latin.woff2",
+  "/assets/fonts/golos-text-400-cyrillic.woff2",
+  "/assets/fonts/golos-text-400-latin.woff2",
+  "/assets/fonts/golos-text-500-cyrillic.woff2",
+  "/assets/fonts/golos-text-500-latin.woff2",
+  "/assets/fonts/golos-text-600-cyrillic.woff2",
+  "/assets/fonts/golos-text-600-latin.woff2",
+  "/assets/fonts/golos-text-700-cyrillic.woff2",
+  "/assets/fonts/golos-text-700-latin.woff2",
+  "/assets/fonts/jetbrains-mono-500-cyrillic.woff2",
+  "/assets/fonts/jetbrains-mono-500-latin.woff2",
+  "/assets/fonts/marck-script-400-cyrillic.woff2",
+  "/assets/fonts/marck-script-400-latin.woff2"
 ];
 
 self.addEventListener('install', (e) => {
@@ -51,7 +51,7 @@ self.addEventListener('fetch', (e) => {
       const copy = res.clone();
       caches.open(CACHE).then((c) => c.put(req, copy));
       return res;
-    }).catch(() => caches.match(req).then((r) => r || caches.match('./'))));
+    }).catch(() => caches.match(req).then((r) => r || caches.match('/'))));
     return;
   }
   e.respondWith(caches.match(req).then((r) => r || fetch(req)));

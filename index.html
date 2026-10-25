@@ -5,39 +5,63 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <!-- GitHub Pages не отдаёт свои заголовки, поэтому политика безопасности продублирована здесь -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
-<title>Подписать PDF онлайн бесплатно — Распишись</title>
-<meta name="description" content="Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.">
+<title>Подписать документ онлайн бесплатно — PDF, скан, фото | Распишись</title>
+<meta name="description" content="Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.">
 <link rel="canonical" href="https://raspishis.ru/">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1d3fa8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Распишись">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="Подписать PDF онлайн бесплатно — Распишись">
-<meta property="og:description" content="Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.">
+<meta property="og:title" content="Подписать документ онлайн бесплатно — PDF, скан, фото | Распишись">
+<meta property="og:description" content="Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.">
 <meta property="og:url" content="https://raspishis.ru/">
 <meta property="og:image" content="https://raspishis.ru/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="favicon.ico" sizes="48x48">
-<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="manifest" href="site.webmanifest">
-<link rel="preload" href="assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts/fonts.css">
-<link rel="stylesheet" href="assets/app.css">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/fonts/fonts.css">
+<link rel="stylesheet" href="/assets/app.css">
+<link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
+<link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Распишись",
-  "url": "https://raspishis.ru/",
-  "description": "Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Any",
-  "inLanguage": "ru",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" }
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Распишись",
+   "url": "https://raspishis.ru/",
+   "description": "Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Any",
+   "inLanguage": "ru",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "RUB"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://raspishis.ru/",
+   "url": "https://raspishis.ru/",
+   "name": "Подписать документ онлайн",
+   "description": "Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
+   "inLanguage": "ru",
+   "isPartOf": {
+    "@type": "WebSite",
+    "name": "Распишись",
+    "url": "https://raspishis.ru/"
+   }
+  }
+ ]
 }
 </script>
 </head>
@@ -104,6 +128,7 @@
       </div>
 
       <button type="button" class="btn primary wide" id="placeSig">Поставить на документ</button>
+      <button type="button" class="btn wide" id="downloadSig">Скачать подпись PNG с прозрачным фоном</button>
     </section>
 
     <section class="block" aria-labelledby="h-saved">
@@ -124,11 +149,16 @@
     <section class="block note">
       <p><strong>Файлы не покидают ваше устройство.</strong> Документ открывается и подписывается прямо в браузере, на сервер ничего не загружается.</p>
       <p>Сервис ставит изображение вашей подписи, как на скане. Там, где закон требует квалифицированную электронную подпись (63-ФЗ: ЭДО, отчётность, госуслуги), нужна КЭП от удостоверяющего центра.</p>
-      <p><a href="privacy.html">Политика конфиденциальности</a></p>
+      <p><a href="/privacy.html">Политика конфиденциальности</a></p>
     </section>
   </aside>
 
   <section class="desk" id="desk" aria-label="Документ">
+    <div class="intro">
+      
+      <h1 id="pageH1">Подписать документ онлайн</h1>
+      <p class="lead" id="pageLead">Поставьте подпись на PDF, скан или фото документа прямо в браузере и скачайте готовый PDF. Бесплатно, без регистрации, файл не загружается на сервер.</p>
+    </div>
     <div class="desk-note" id="deskNote">
       <span class="tag">Пример</span>
       <p>Это образец акта. Откройте свой PDF или фото документа, или перетащите файл сюда.</p>
@@ -140,18 +170,30 @@
 
 <section class="about" aria-label="О сервисе">
   <div class="about-inner">
-    <div>
       <h2>Как подписать документ онлайн</h2>
       <ol class="steps">
         <li><span><b>Откройте документ</b>PDF, скан или фото договора, акта, заявления. Можно просто перетащить файл в окно.</span></li>
         <li><span><b>Создайте подпись</b>Распишитесь мышью или пальцем, напечатайте фамилию рукописным шрифтом или загрузите фото своей подписи.</span></li>
         <li><span><b>Поставьте и скачайте</b>Перетащите подпись на нужное место, добавьте дату и расшифровку, затем скачайте подписанный PDF.</span></li>
       </ol>
-    </div>
+      <h2>Что умеет «Распишись»</h2>
+      <ul class="feats">
+        <li>Подпись мышью, пальцем или стилусом, напечатанная рукописным шрифтом или с фото</li>
+        <li>PDF любого размера, сканы и фото в JPG, PNG и WEBP</li>
+        <li>Подпись на все страницы одним нажатием, копии подписи, дата и любой текст</li>
+        <li>Синие, чёрные и фиолетовые чернила, толщина линии и прозрачность подписи</li>
+        <li>Скачивание подписи отдельно в PNG с прозрачным фоном</li>
+        <li>Работает на телефоне и без интернета после первого открытия</li>
+      </ul>
+      <h2>Ваш документ остаётся у вас</h2>
+      <p>Файл открывается и подписывается прямо в браузере на вашем телефоне или компьютере. Он не загружается на сервер, поэтому никто, кроме вас, его не увидит. Это важно для договоров, паспортных данных и финансовых документов.</p>
+      <h2>Имеет ли такая подпись юридическую силу</h2>
+      <p>Сервис ставит изображение вашей собственноручной подписи, как при сканировании подписанного документа. По статье 160 Гражданского кодекса РФ такой аналог подписи допустим, если это предусмотрено законом или договорённостью сторон, например когда вы с контрагентом обмениваетесь сканами. Для сдачи отчётности, электронного документооборота и госуслуг, где закон требует квалифицированную электронную подпись (63-ФЗ), нужна КЭП от удостоверяющего центра.</p>
   </div>
   <footer class="footer">
+    <nav aria-label="Разделы сайта"><a href="/" aria-current="page">Подписать документ</a> <a href="/podpisat-pdf/">Подписать PDF</a> <a href="/sozdat-podpis/">Создать подпись</a> <a href="/podpisat-dogovor/">Подписать договор</a> <a href="/podpisat-akt/">Подписать акт</a> <a href="/podpisat-skan/">Подписать скан или фото</a></nav>
     <span>© 2026 Распишись. Все права защищены.</span>
-    <a href="privacy.html">Политика конфиденциальности</a>
+    <a href="/privacy.html">Политика конфиденциальности</a>
     <span>Шрифты: Golos Text, Marck Script, Caveat, Bad Script, JetBrains Mono (SIL OFL)</span>
   </footer>
 </section>
@@ -163,9 +205,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="assets/vendor/pdf.min.js"></script>
-<script src="assets/vendor/pdf-lib.min.js"></script>
-<script src="assets/app.js"></script>
-<script src="assets/sw-register.js"></script>
+<script src="/assets/app.js"></script>
+<script src="/assets/sw-register.js"></script>
 </body>
 </html>
