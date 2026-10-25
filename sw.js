@@ -1,5 +1,5 @@
 // Офлайн-режим: файлы сайта сохраняются в браузере, документы никуда не отправляются.
-const CACHE = 'raspishis-2655e65d0d';
+const CACHE = 'raspishis-eecac27f96';
 const PRECACHE = [
   "./",
   "privacy.html",
