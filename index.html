@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- GitHub Pages не отдаёт свои заголовки, поэтому политика безопасности продублирована здесь -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>Подписать PDF онлайн бесплатно — Распишись</title>
+<meta name="description" content="Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.">
+<link rel="canonical" href="https://raspishis.ru/">
+<meta name="theme-color" content="#1d3fa8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Распишись">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Подписать PDF онлайн бесплатно — Распишись">
+<meta property="og:description" content="Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.">
+<meta property="og:url" content="https://raspishis.ru/">
+<meta property="og:image" content="https://raspishis.ru/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<link rel="stylesheet" href="assets/app.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Распишись",
+  "url": "https://raspishis.ru/",
+  "description": "Поставьте подпись на PDF или фото документа прямо в браузере: нарисуйте, напечатайте или загрузите подпись и скачайте подписанный PDF. Бесплатно, без регистрации, файлы не покидают устройство.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "inLanguage": "ru",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "RUB" }
+}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><b>Распишись</b><span>подпись документов онлайн</span></div>
+  <div class="doc-chip" id="docChip"><strong id="docName">Документ не открыт</strong><span class="mono" id="docPages"></span></div>
+  <div class="actions">
+    <button class="btn" id="openBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg>
+      <span class="hide-sm">Открыть документ</span><span class="show-sm">Открыть</span>
+    </button>
+    <button class="btn primary" id="downloadBtn" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      <span id="downloadLabel">Скачать<span class="hide-sm"> PDF</span></span><span class="badge" id="elCount" hidden>0</span>
+    </button>
+  </div>
+</header>
+
+<main class="app">
+  <aside class="panel">
+    <section class="block" aria-labelledby="h-sig">
+      <h2 id="h-sig">Подпись</h2>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="tab-draw" aria-selected="true" data-tab="draw">Нарисовать</button>
+        <button type="button" role="tab" id="tab-type" aria-selected="false" data-tab="type">Напечатать</button>
+        <button type="button" role="tab" id="tab-upload" aria-selected="false" data-tab="upload">Загрузить</button>
+      </div>
+
+      <div class="tabpanel" data-panel="draw">
+        <div class="pad-wrap">
+          <span class="pad-x">×</span>
+          <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
+          <canvas id="pad" aria-label="Поле для подписи"></canvas>
+        </div>
+      </div>
+
+      <div class="tabpanel" data-panel="type" hidden>
+        <label class="field">Фамилия или ФИО
+          <input class="input" id="typedName" type="text" value="Иванов" maxlength="40" autocomplete="name">
+        </label>
+        <div class="fonts" id="fontList" style="margin-top:10px"></div>
+      </div>
+
+      <div class="tabpanel" data-panel="upload" hidden>
+        <button type="button" class="upload-box" id="sigUploadBtn"><span id="sigUploadEmpty">Выбрать фото подписи</span><img id="sigUploadPreview" alt="Загруженная подпись" hidden></button>
+        <p class="hint" style="margin-top:8px">Распишитесь на белом листе и сфотографируйте при хорошем свете. Белый фон уберём автоматически.</p>
+      </div>
+
+      <div class="row spread" id="inkRow">
+        <div class="row">
+          <span class="label">Чернила</span>
+          <div class="swatches" id="swatches">
+            <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие" style="background:var(--ink-blue)"></button>
+            <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные" style="background:var(--ink-black)"></button>
+            <button type="button" class="swatch" data-ink="violet" aria-pressed="false" aria-label="Фиолетовые" style="background:var(--ink-violet)"></button>
+          </div>
+        </div>
+        <label class="row label" id="thickRow">Толщина <input type="range" id="thick" min="1.4" max="5" step="0.1" value="2.6"></label>
+      </div>
+      <div class="row" id="padTools">
+        <button type="button" class="btn ghost" id="undoBtn">Отменить штрих</button>
+        <button type="button" class="btn ghost" id="clearBtn">Очистить</button>
+      </div>
+
+      <button type="button" class="btn primary wide" id="placeSig">Поставить на документ</button>
+    </section>
+
+    <section class="block" aria-labelledby="h-saved">
+      <h2 id="h-saved">Мои подписи</h2>
+      <div class="saved" id="saved"></div>
+      <p class="hint" id="savedEmpty">Здесь появятся подписи, которые вы уже ставили. Они хранятся только в этом браузере.</p>
+    </section>
+
+    <section class="block" aria-labelledby="h-add">
+      <h2 id="h-add">Добавить на документ</h2>
+      <button type="button" class="btn" id="addDate" style="justify-content:flex-start">Дату <span class="label" id="todayLabel" style="font-family:var(--font-mono)"></span></button>
+      <div class="add-grid">
+        <input class="input" id="freeText" type="text" placeholder="Расшифровка, должность, «Согласовано»" maxlength="80">
+        <button type="button" class="btn" id="addText">Текст</button>
+      </div>
+    </section>
+
+    <section class="block note">
+      <p><strong>Файлы не покидают ваше устройство.</strong> Документ открывается и подписывается прямо в браузере, на сервер ничего не загружается.</p>
+      <p>Сервис ставит изображение вашей подписи, как на скане. Там, где закон требует квалифицированную электронную подпись (63-ФЗ: ЭДО, отчётность, госуслуги), нужна КЭП от удостоверяющего центра.</p>
+      <p><a href="privacy.html">Политика конфиденциальности</a></p>
+    </section>
+  </aside>
+
+  <section class="desk" id="desk" aria-label="Документ">
+    <div class="desk-note" id="deskNote">
+      <span class="tag">Пример</span>
+      <p>Это образец акта. Откройте свой PDF или фото документа, или перетащите файл сюда.</p>
+      <button type="button" class="btn" id="openBtn2">Открыть документ</button>
+    </div>
+    <div class="pages" id="pages"></div>
+  </section>
+</main>
+
+<section class="about" aria-label="О сервисе">
+  <div class="about-inner">
+    <div>
+      <h2>Как подписать документ онлайн</h2>
+      <ol class="steps">
+        <li><span><b>Откройте документ</b>PDF, скан или фото договора, акта, заявления. Можно просто перетащить файл в окно.</span></li>
+        <li><span><b>Создайте подпись</b>Распишитесь мышью или пальцем, напечатайте фамилию рукописным шрифтом или загрузите фото своей подписи.</span></li>
+        <li><span><b>Поставьте и скачайте</b>Перетащите подпись на нужное место, добавьте дату и расшифровку, затем скачайте подписанный PDF.</span></li>
+      </ol>
+    </div>
+    <div>
+      <h2>Частые вопросы</h2>
+      <div class="faq">
+        <details><summary>Это бесплатно?</summary><p>Да. Без регистрации, без водяных знаков и без ограничений на количество документов.</p></details>
+        <details><summary>Куда загружаются мои документы?</summary><p>Никуда. Документ открывается и подписывается в браузере на вашем устройстве и не передаётся на сервер.</p></details>
+        <details><summary>Есть ли у такой подписи юридическая сила?</summary><p>Сервис ставит изображение собственноручной подписи, как при сканировании. По статье 160 ГК РФ такой аналог подписи допустим, если это предусмотрено законом или соглашением сторон, например когда вы договорились обмениваться сканами. Там, где нужна квалифицированная электронная подпись по 63-ФЗ, используйте КЭП.</p></details>
+        <details><summary>Какие файлы подходят?</summary><p>PDF, JPG, PNG и WEBP. Результат всегда сохраняется в PDF.</p></details>
+        <details><summary>Можно подписать все страницы сразу?</summary><p>Да. Выделите поставленную подпись и нажмите «На все страницы»: она встанет на то же место на каждом листе.</p></details>
+        <details><summary>Работает на телефоне?</summary><p>Да. Расписаться можно пальцем прямо на экране.</p></details>
+      </div>
+    </div>
+  </div>
+  <footer class="footer">
+    <span>© 2026 Распишись. Все права защищены.</span>
+    <a href="privacy.html">Политика конфиденциальности</a>
+    <span>Шрифты: Golos Text, Marck Script, Caveat, Bad Script, JetBrains Mono (SIL OFL)</span>
+  </footer>
+</section>
+
+
+<div class="placing-bar" id="placingBar" hidden><span>Нажмите на страницу, куда поставить</span><button type="button" id="cancelPlace">Отмена</button></div>
+<img class="ghost" id="ghost" alt="" hidden>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
+<input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
+
+<script src="assets/vendor/pdf.min.js"></script>
+<script src="assets/vendor/pdf-lib.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

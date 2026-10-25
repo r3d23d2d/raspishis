@@ -1,0 +1,23 @@
+© 2026 «Распишись» (https://raspishis.ru). Все права защищены.
+
+Исходный код, дизайн, тексты и графика этого сайта охраняются авторским правом
+(часть четвёртая Гражданского кодекса РФ). Публикация файлов в открытом доступе
+не даёт права на их использование.
+
+Без письменного разрешения правообладателя запрещено копировать, изменять,
+распространять, размещать на других сайтах или использовать в коммерческих
+целях код, дизайн и материалы сайта целиком или частично.
+
+---
+
+Copyright (c) 2026 Raspishis (https://raspishis.ru). All rights reserved.
+No permission is granted to copy, modify, distribute or use this code, design
+or content, in whole or in part, without prior written consent.
+
+---
+
+Сторонние компоненты распространяются по своим лицензиям и в запрет выше не входят:
+- pdf.js (Mozilla Foundation): Apache License 2.0, файлы assets/vendor/pdf*.js
+- pdf-lib (Andrew Dillon): MIT License, файл assets/vendor/pdf-lib.min.js
+- Шрифты Golos Text, Marck Script, Caveat, Bad Script, JetBrains Mono:
+  SIL Open Font License 1.1, папка assets/fonts
