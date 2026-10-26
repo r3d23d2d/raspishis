@@ -1,5 +1,5 @@
 // Офлайн-режим: файлы сайта сохраняются в браузере, документы никуда не отправляются.
-const CACHE = 'raspishis-78c2d51409';
+const CACHE = 'raspishis-cb13d2b01a';
 const PRECACHE = [
   "/",
   "/privacy.html",
@@ -7,8 +7,8 @@ const PRECACHE = [
   "/favicon.ico",
   "/icon-192.png",
   "/icon-512.png",
-  "/assets/app.css?v=b29ae54f",
-  "/assets/app.js?v=41898cd7",
+  "/assets/app.css?v=2eea994a",
+  "/assets/app.js?v=78c29c7d",
   "/assets/sw-register.js",
   "/assets/fonts/fonts.css",
   "/assets/vendor/pdf.min.js",

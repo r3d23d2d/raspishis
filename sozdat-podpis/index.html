@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=b29ae54f">
+<link rel="stylesheet" href="/assets/app.css?v=2eea994a">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -133,7 +133,7 @@
             <div class="swatches" id="swatches" role="group" aria-label="Цвет чернил">
               <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие чернила" title="Синие чернила" style="background:var(--ink-blue)"></button>
               <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные чернила" title="Чёрные чернила" style="background:var(--ink-black)"></button>
-              <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" id="inkPicker" value="#b3261e" aria-label="Выбрать любой цвет чернил"></label>
+              <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" class="ink-picker" id="inkPicker" value="#b3261e" aria-label="Выбрать любой цвет чернил"></label>
             </div>
             <label class="thick" title="Толщина линии">
               <input type="range" id="thick" min="1.2" max="5" step="0.1" value="2.6" aria-label="Толщина линии">
@@ -153,6 +153,14 @@
           <button type="button" class="font-opt" role="radio" data-font="marck" aria-checked="false" style="font-family:'Marck Script',cursive">Иванов И. И.</button>
           <button type="button" class="font-opt" role="radio" data-font="caveat" aria-checked="false" style="font-family:'Caveat',cursive;font-weight:600;font-size:23px">Иванов И. И.</button>
           <button type="button" class="font-opt" role="radio" data-font="bad" aria-checked="false" style="font-family:'Bad Script',cursive;font-size:18px">Иванов И. И.</button>
+        </div>
+        <div class="ink-row">
+          <span class="mini-label">Цвет</span>
+          <div class="swatches" role="group" aria-label="Цвет текста">
+            <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синий" title="Синий" style="background:var(--ink-blue)"></button>
+            <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрный" title="Чёрный" style="background:var(--ink-black)"></button>
+            <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" class="ink-picker" value="#b3261e" aria-label="Выбрать любой цвет текста"></label>
+          </div>
         </div>
         <button type="button" class="btn primary wide" id="placeText">Поставить текст</button>
       </div>
@@ -207,7 +215,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=41898cd7"></script>
+<script src="/assets/app.js?v=78c29c7d"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
