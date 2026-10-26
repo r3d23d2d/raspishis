@@ -6,7 +6,7 @@
 <!-- GitHub Pages не отдаёт свои заголовки, поэтому политика безопасности продублирована здесь -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
 <title>Создать подпись онлайн и скачать PNG с прозрачным фоном | Распишись</title>
-<meta name="description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
+<meta name="description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем или загрузите её фото и скачайте подпись в PNG с прозрачным фоном.">
 <link rel="canonical" href="https://raspishis.ru/sozdat-podpis/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1d3fa8">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Распишись">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Создать подпись онлайн и скачать PNG с прозрачным фоном | Распишись">
-<meta property="og:description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
+<meta property="og:description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем или загрузите её фото и скачайте подпись в PNG с прозрачным фоном.">
 <meta property="og:url" content="https://raspishis.ru/sozdat-podpis/">
 <meta property="og:image" content="https://raspishis.ru/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=9572e145">
+<link rel="stylesheet" href="/assets/app.css?v=48926d34">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -53,7 +53,7 @@
    "@id": "https://raspishis.ru/sozdat-podpis/",
    "url": "https://raspishis.ru/sozdat-podpis/",
    "name": "Создать подпись онлайн",
-   "description": "Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.",
+   "description": "Генератор подписи онлайн: нарисуйте подпись мышью или пальцем или загрузите её фото и скачайте подпись в PNG с прозрачным фоном.",
    "inLanguage": "ru",
    "isPartOf": {
     "@type": "WebSite",
@@ -126,8 +126,7 @@
 
       <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
       <div class="sig-alt">
-        <button type="button" class="btn" id="fioSig" title="Рукописная подпись из фамилии в поле «ФИО»">Подпись из ФИО</button>
-        <button type="button" class="btn" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически">Загрузить фото</button>
+        <button type="button" class="btn" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически">Загрузить свою подпись</button>
         <button type="button" class="btn" id="downloadSig" title="Скачать нарисованную подпись в PNG с прозрачным фоном">Скачать PNG</button>
       </div>
     </section>
@@ -170,11 +169,11 @@
     <div class="intro">
       <ol class="crumbs"><li><a href="/">Главная</a></li><li aria-current="page">Создать подпись</li></ol>
       <h1>Создать подпись онлайн</h1>
-      <p class="lead">Нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или сфотографируйте свою подпись. Скачайте её в PNG с прозрачным фоном или сразу поставьте на документ.</p>
+      <p class="lead">Нарисуйте подпись мышью или пальцем или сфотографируйте свою подпись на бумаге. Скачайте её в PNG с прозрачным фоном или сразу поставьте на документ.</p>
     </div>
       <h2>Как сделать подпись онлайн</h2>
       <ol class="steps">
-        <li><span><b>Выберите способ</b>Распишитесь в рамке от руки, нажмите «Подпись из ФИО», чтобы получить подпись рукописным шрифтом, или «Загрузить фото» для подписи на бумаге.</span></li>
+        <li><span><b>Выберите способ</b>Распишитесь в рамке от руки или нажмите «Загрузить свою подпись», чтобы взять её с фото на бумаге.</span></li>
         <li><span><b>Настройте вид</b>Выберите цвет чернил и толщину линии. Если рисуете пальцем, расписывайтесь крупно: подпись уменьшится без потери качества.</span></li>
         <li><span><b>Скачайте PNG</b>Нажмите «Скачать PNG». Файл подойдёт для Word, Google Документов, презентаций и электронных писем.</span></li>
       </ol>
@@ -200,7 +199,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=dbbdde56"></script>
+<script src="/assets/app.js?v=489a4b47"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
