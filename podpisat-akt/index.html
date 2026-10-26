@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=feced4d6">
+<link rel="stylesheet" href="/assets/app.css?v=93a92736">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -108,33 +108,35 @@
       <h2 class="step-h" id="h-sig"><span class="num" aria-hidden="true">2</span>Подпись</h2>
       <p class="mini-label" id="savedLabel" hidden>Мои подписи</p>
       <div class="saved" id="saved"></div>
-      <div class="pad-wrap">
-        <span class="pad-x">×</span>
-        <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
-        <canvas id="pad" aria-label="Поле для подписи"></canvas>
-      </div>
-
-      <div class="row spread" id="inkRow">
-        <div class="row">
-          <span class="label">Чернила</span>
-          <div class="swatches" id="swatches">
-            <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие" style="background:var(--ink-blue)"></button>
-            <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные" style="background:var(--ink-black)"></button>
-            <button type="button" class="swatch" data-ink="violet" aria-pressed="false" aria-label="Фиолетовые" style="background:var(--ink-violet)"></button>
+      <div class="pad-card">
+        <div class="pad-wrap">
+          <div class="pad-top">
+            <button type="button" class="tool" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></svg>Загрузить фото</button>
+            <span class="pad-edit" id="padEdit" hidden>
+              <button type="button" class="tool icon" id="undoBtn" title="Отменить последний штрих" aria-label="Отменить последний штрих"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
+              <button type="button" class="tool icon" id="clearBtn" title="Стереть подпись" aria-label="Стереть подпись"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg></button>
+            </span>
           </div>
+          <span class="pad-x">×</span>
+          <span class="pad-hint" id="padHint">Распишитесь здесь мышью или пальцем</span>
+          <canvas id="pad" aria-label="Поле для подписи"></canvas>
         </div>
-        <label class="row label" id="thickRow">Толщина <input type="range" id="thick" min="1.4" max="5" step="0.1" value="2.6"></label>
-      </div>
-      <div class="row pad-tools" id="padTools">
-        <button type="button" class="link-btn" id="undoBtn">Отменить штрих</button>
-        <button type="button" class="link-btn" id="clearBtn">Очистить</button>
+        <div class="pad-bar">
+          <div class="swatches" id="swatches" role="group" aria-label="Цвет чернил">
+            <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие чернила" title="Синие чернила" style="background:var(--ink-blue)"></button>
+            <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные чернила" title="Чёрные чернила" style="background:var(--ink-black)"></button>
+            <button type="button" class="swatch" data-ink="violet" aria-pressed="false" aria-label="Фиолетовые чернила" title="Фиолетовые чернила" style="background:var(--ink-violet)"></button>
+          </div>
+          <div class="nibs" id="nibs" role="group" aria-label="Толщина линии">
+            <button type="button" class="nib" data-w="1.7" aria-pressed="false" aria-label="Тонкая линия" title="Тонкая линия"><i style="height:2px"></i></button>
+            <button type="button" class="nib" data-w="2.6" aria-pressed="true" aria-label="Средняя линия" title="Средняя линия"><i style="height:3px"></i></button>
+            <button type="button" class="nib" data-w="3.8" aria-pressed="false" aria-label="Толстая линия" title="Толстая линия"><i style="height:5px"></i></button>
+          </div>
+          <button type="button" class="tool" id="downloadSig" title="Скачать подпись картинкой PNG с прозрачным фоном"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>PNG</button>
+        </div>
       </div>
 
       <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
-      <div class="links">
-        <button type="button" class="link-btn" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически">Загрузить свою подпись</button>
-        <button type="button" class="link-btn" id="downloadSig" title="Скачать нарисованную подпись в PNG с прозрачным фоном">Скачать PNG</button>
-      </div>
     </section>
 
     <section class="block" aria-labelledby="h-add">
@@ -196,7 +198,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=a4b9a082"></script>
+<script src="/assets/app.js?v=93200df7"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
