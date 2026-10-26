@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=6689e37a">
+<link rel="stylesheet" href="/assets/app.css?v=2d8fce91">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -84,9 +84,9 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 18v-6M9 15l3-3 3 3"/></svg>
         <span id="docBtnLabel">Добавить документ</span>
       </button>
-      <div class="doc-row" id="docRow" hidden>
-        <span class="doc-name" id="stepDocName"></span>
-        <button type="button" class="link-btn" id="closeDoc">Закрыть документ</button>
+      <div class="doc-row">
+        <span class="doc-name" id="stepDocName">PDF, JPG, PNG или WEBP</span>
+        <button type="button" class="link-btn" id="closeDoc" hidden>Закрыть документ</button>
       </div>
     </section>
 
@@ -109,13 +109,13 @@
           <div class="swatches" id="swatches" role="group" aria-label="Цвет чернил">
             <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие чернила" title="Синие чернила" style="background:var(--ink-blue)"></button>
             <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные чернила" title="Чёрные чернила" style="background:var(--ink-black)"></button>
-            <button type="button" class="swatch" data-ink="violet" aria-pressed="false" aria-label="Фиолетовые чернила" title="Фиолетовые чернила" style="background:var(--ink-violet)"></button>
+            <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" id="inkPicker" value="#b3261e" aria-label="Выбрать любой цвет чернил"></label>
           </div>
-          <div class="nibs" id="nibs" role="group" aria-label="Толщина линии">
-            <button type="button" class="nib" data-w="1.7" aria-pressed="false" aria-label="Тонкая линия" title="Тонкая линия"><i style="height:2px"></i></button>
-            <button type="button" class="nib" data-w="2.6" aria-pressed="true" aria-label="Средняя линия" title="Средняя линия"><i style="height:3px"></i></button>
-            <button type="button" class="nib" data-w="3.8" aria-pressed="false" aria-label="Толстая линия" title="Толстая линия"><i style="height:5px"></i></button>
-          </div>
+          <label class="thick" title="Толщина линии">
+            <i class="thin" aria-hidden="true"></i>
+            <input type="range" id="thick" min="1.2" max="5" step="0.1" value="2.6" aria-label="Толщина линии">
+            <i class="fat" aria-hidden="true"></i>
+          </label>
           <button type="button" class="tool" id="downloadSig" title="Скачать подпись картинкой PNG с прозрачным фоном"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>PNG</button>
         </div>
       </div>
@@ -138,9 +138,7 @@
       </div>
     </section>
 
-    <section class="block note">
-      <p><a href="/privacy.html">Политика конфиденциальности</a></p>
-    </section>
+    
   </aside>
 
   <section class="desk" id="desk" aria-label="Документ">
@@ -155,7 +153,7 @@
 </main>
 
 <details class="about" id="about">
-  <summary>О сервисе и как подписать документ</summary>
+  <summary><span class="about-toggle">О сервисе и как подписать документ</span><a class="about-privacy" href="/privacy.html">Политика конфиденциальности</a></summary>
   <div class="about-inner">
     <div class="intro">
       
@@ -186,7 +184,6 @@
   <footer class="footer">
     <nav aria-label="Разделы сайта"><a href="/" aria-current="page">Подписать документ</a> <a href="/podpisat-pdf/">Подписать PDF</a> <a href="/sozdat-podpis/">Создать подпись</a> <a href="/podpisat-dogovor/">Подписать договор</a> <a href="/podpisat-akt/">Подписать акт</a> <a href="/podpisat-skan/">Подписать скан или фото</a></nav>
     <span>© 2026 Распишись. Все права защищены.</span>
-    <a href="/privacy.html">Политика конфиденциальности</a>
     <span>Шрифты: Golos Text, Marck Script, Caveat, Bad Script, JetBrains Mono (SIL OFL)</span>
   </footer>
 </details>
@@ -198,7 +195,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=48ab8d78"></script>
+<script src="/assets/app.js?v=db954ff5"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
