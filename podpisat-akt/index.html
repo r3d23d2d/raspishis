@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=c2ca399f">
+<link rel="stylesheet" href="/assets/app.css?v=4c948375">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -146,16 +146,16 @@
         <button type="button" class="upload-link" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически"><span>или <u>загрузить свою подпись</u></span></button>
       </div>
       <div class="mode" id="mode-text" role="tabpanel" aria-labelledby="tab-text" hidden>
-        <label class="mini-label" for="fioInput">ФИО</label>
-        <div class="pair">
-          <input class="input" id="fioInput" type="text" placeholder="Например, Иванов И. И." maxlength="60" autocomplete="name">
-          <button type="button" class="btn" id="addFio">Поставить</button>
+        <input class="input" id="textInput" type="text" placeholder="ФИО, дата или любой текст" maxlength="80" autocomplete="name" aria-label="Текст для документа">
+        <button type="button" class="link-btn" id="insertDate">+ сегодняшняя дата</button>
+        <p class="mini-label">Шрифт</p>
+        <div class="fonts" id="fonts" role="radiogroup" aria-label="Шрифт">
+          <button type="button" class="font-opt" role="radio" data-font="body" aria-checked="true" style="font-family:var(--font-body);font-size:17px">Иванов И. И.</button>
+          <button type="button" class="font-opt" role="radio" data-font="marck" aria-checked="false" style="font-family:'Marck Script',cursive">Иванов И. И.</button>
+          <button type="button" class="font-opt" role="radio" data-font="caveat" aria-checked="false" style="font-family:'Caveat',cursive;font-weight:600;font-size:23px">Иванов И. И.</button>
+          <button type="button" class="font-opt" role="radio" data-font="bad" aria-checked="false" style="font-family:'Bad Script',cursive;font-size:18px">Иванов И. И.</button>
         </div>
-        <label class="mini-label" for="dateInput">Дата</label>
-        <div class="pair">
-          <input class="input" id="dateInput" type="date">
-          <button type="button" class="btn" id="addDate">Поставить</button>
-        </div>
+        <button type="button" class="btn primary wide" id="placeText">Поставить текст</button>
       </div>
     </section>
 
@@ -184,7 +184,7 @@
       <h2>Как подписать акт онлайн</h2>
       <ol class="steps">
         <li><span><b>Откройте акт</b>PDF из бухгалтерской программы или фото акта, который подписала другая сторона.</span></li>
-        <li><span><b>Подпишите свою часть</b>Поставьте подпись над строкой «подпись» в блоке исполнителя или заказчика. Для расшифровки переключитесь на «Текст», впишите фамилию с инициалами и нажмите «Поставить».</span></li>
+        <li><span><b>Подпишите свою часть</b>Поставьте подпись над строкой «подпись» в блоке исполнителя или заказчика. Для расшифровки переключитесь на «Текст», впишите фамилию с инициалами и нажмите «Поставить текст».</span></li>
         <li><span><b>Поставьте печать, если она есть</b>Сфотографируйте оттиск печати на белом листе и загрузите его кнопкой «Загрузить свою подпись»: фон уберётся, и печать можно поставить на место «М. П.».</span></li>
         <li><span><b>Скачайте и отправьте</b>Скачайте подписанный акт в PDF и отправьте контрагенту.</span></li>
       </ol>
@@ -207,7 +207,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=7a66ad6d"></script>
+<script src="/assets/app.js?v=84edaa71"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
