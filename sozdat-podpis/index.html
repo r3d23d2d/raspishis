@@ -164,8 +164,6 @@
     </section>
 
     <section class="block note">
-      <p><strong>Файлы не покидают ваше устройство.</strong> Документ открывается и подписывается прямо в браузере, на сервер ничего не загружается.</p>
-      <p>Сервис ставит изображение вашей подписи, как на скане. Там, где закон требует квалифицированную электронную подпись (63-ФЗ: ЭДО, отчётность, госуслуги), нужна КЭП от удостоверяющего центра.</p>
       <p><a href="/privacy.html">Политика конфиденциальности</a></p>
     </section>
   </aside>
@@ -176,10 +174,11 @@
       <h1 id="pageH1">Создать подпись онлайн</h1>
       <p class="lead" id="pageLead">Нарисуйте подпись мышью или пальцем, напечатайте фамилию рукописным шрифтом или сфотографируйте свою подпись. Скачайте её в PNG с прозрачным фоном или сразу поставьте на документ.</p>
     </div>
-    <div class="desk-note" id="deskNote">
-      <span class="tag">Пример</span>
-      <p>Это образец акта. Откройте свой PDF или фото документа, или перетащите файл сюда.</p>
-      <button type="button" class="btn" id="openBtn2">Открыть документ</button>
+    <div class="empty" id="deskNote">
+      <svg class="empty-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 5H13a4 4 0 0 0-4 4v30a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V16z"/><path d="M28 5v11h11"/><path d="M16 34c3-5 5-6 6-3s2 3 4 0 3-3 6 1"/></svg>
+      <p class="empty-title">Откройте документ, чтобы поставить подпись</p>
+      <p class="empty-sub">PDF, скан или фото: JPG, PNG, WEBP. Можно перетащить файл сюда. Документ не загружается на сервер.</p>
+      <button type="button" class="btn primary" id="openBtn2">Открыть документ</button>
     </div>
     <div class="pages" id="pages"></div>
   </section>
