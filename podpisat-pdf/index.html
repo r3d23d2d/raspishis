@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=5487c8bb">
+<link rel="stylesheet" href="/assets/app.css?v=c2ca399f">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -110,49 +110,54 @@
     <section class="block" aria-labelledby="h-sig">
       <div class="step-row">
         <h2 class="step-h" id="h-sig"><span class="num" aria-hidden="true">2</span>Подпись</h2>
-        <div class="chips" role="group" aria-label="Добавить ФИО или дату">
-          <button type="button" class="chip" data-quick="fio" aria-expanded="false" aria-controls="quick-fio" title="Поставить ФИО на документ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>ФИО</button>
-          <button type="button" class="chip" data-quick="date" aria-expanded="false" aria-controls="quick-date" title="Поставить дату на документ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Дата</button>
+        <div class="seg" role="tablist" aria-label="Что поставить">
+          <button type="button" role="tab" id="tab-sig" data-mode="sig" aria-selected="true" aria-controls="mode-sig">Подпись</button>
+          <button type="button" role="tab" id="tab-text" data-mode="text" aria-selected="false" aria-controls="mode-text">Текст</button>
         </div>
       </div>
-      <div class="pair quick" id="quick-fio" hidden>
-        <input class="input" id="fioInput" type="text" placeholder="Например, Иванов И. И." maxlength="60" autocomplete="name" aria-label="ФИО">
-        <button type="button" class="btn" id="addFio">Поставить</button>
-      </div>
-      <div class="pair quick" id="quick-date" hidden>
-        <input class="input" id="dateInput" type="date" aria-label="Дата">
-        <button type="button" class="btn" id="addDate">Поставить</button>
-      </div>
-      <p class="mini-label" id="savedLabel" hidden>Мои подписи</p>
-      <div class="saved" id="saved"></div>
-      <div class="pad-card">
-        <div class="pad-wrap">
-          <div class="pad-top">
-            <span class="pad-edit" id="padEdit" hidden>
-              <button type="button" class="tool icon" id="undoBtn" title="Отменить последний штрих" aria-label="Отменить последний штрих"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
-              <button type="button" class="tool icon" id="clearBtn" title="Стереть подпись" aria-label="Стереть подпись"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg></button>
-            </span>
+      <div class="mode" id="mode-sig" role="tabpanel" aria-labelledby="tab-sig">
+        <p class="mini-label" id="savedLabel" hidden>Мои подписи</p>
+        <div class="saved" id="saved"></div>
+        <div class="pad-card">
+          <div class="pad-wrap">
+            <div class="pad-top">
+              <span class="pad-edit" id="padEdit" hidden>
+                <button type="button" class="tool icon" id="undoBtn" title="Отменить последний штрих" aria-label="Отменить последний штрих"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></button>
+                <button type="button" class="tool icon" id="clearBtn" title="Стереть подпись" aria-label="Стереть подпись"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg></button>
+              </span>
+            </div>
+            <span class="pad-hint" id="padHint">Распишитесь здесь мышью или пальцем</span>
+            <canvas id="pad" aria-label="Поле для подписи"></canvas>
           </div>
-          <span class="pad-hint" id="padHint">Распишитесь здесь мышью или пальцем</span>
-          <canvas id="pad" aria-label="Поле для подписи"></canvas>
-        </div>
-        <div class="pad-bar">
-          <div class="swatches" id="swatches" role="group" aria-label="Цвет чернил">
-            <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие чернила" title="Синие чернила" style="background:var(--ink-blue)"></button>
-            <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные чернила" title="Чёрные чернила" style="background:var(--ink-black)"></button>
-            <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" id="inkPicker" value="#b3261e" aria-label="Выбрать любой цвет чернил"></label>
+          <div class="pad-bar">
+            <div class="swatches" id="swatches" role="group" aria-label="Цвет чернил">
+              <button type="button" class="swatch" data-ink="blue" aria-pressed="true" aria-label="Синие чернила" title="Синие чернила" style="background:var(--ink-blue)"></button>
+              <button type="button" class="swatch" data-ink="black" aria-pressed="false" aria-label="Чёрные чернила" title="Чёрные чернила" style="background:var(--ink-black)"></button>
+              <label class="swatch custom" data-ink="custom" aria-pressed="false" title="Любой цвет"><input type="color" id="inkPicker" value="#b3261e" aria-label="Выбрать любой цвет чернил"></label>
+            </div>
+            <label class="thick" title="Толщина линии">
+              <input type="range" id="thick" min="1.2" max="5" step="0.1" value="2.6" aria-label="Толщина линии">
+            </label>
+            <button type="button" class="tool" id="downloadSig" title="Скачать подпись картинкой PNG с прозрачным фоном"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>PNG</button>
           </div>
-          <label class="thick" title="Толщина линии">
-            <input type="range" id="thick" min="1.2" max="5" step="0.1" value="2.6" aria-label="Толщина линии">
-          </label>
-          <button type="button" class="tool" id="downloadSig" title="Скачать подпись картинкой PNG с прозрачным фоном"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg>PNG</button>
         </div>
-      </div>
 
-      <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
-      <button type="button" class="upload-link" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически"><span>или <u>загрузить свою подпись</u></span></button>
+        <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
+        <button type="button" class="upload-link" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически"><span>или <u>загрузить свою подпись</u></span></button>
+      </div>
+      <div class="mode" id="mode-text" role="tabpanel" aria-labelledby="tab-text" hidden>
+        <label class="mini-label" for="fioInput">ФИО</label>
+        <div class="pair">
+          <input class="input" id="fioInput" type="text" placeholder="Например, Иванов И. И." maxlength="60" autocomplete="name">
+          <button type="button" class="btn" id="addFio">Поставить</button>
+        </div>
+        <label class="mini-label" for="dateInput">Дата</label>
+        <div class="pair">
+          <input class="input" id="dateInput" type="date">
+          <button type="button" class="btn" id="addDate">Поставить</button>
+        </div>
+      </div>
     </section>
-
 
     
   </aside>
@@ -204,7 +209,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=d93db957"></script>
+<script src="/assets/app.js?v=7a66ad6d"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
