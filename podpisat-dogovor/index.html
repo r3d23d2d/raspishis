@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=4c948375">
+<link rel="stylesheet" href="/assets/app.css?v=b29ae54f">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -147,7 +147,6 @@
       </div>
       <div class="mode" id="mode-text" role="tabpanel" aria-labelledby="tab-text" hidden>
         <input class="input" id="textInput" type="text" placeholder="ФИО, дата или любой текст" maxlength="80" autocomplete="name" aria-label="Текст для документа">
-        <button type="button" class="link-btn" id="insertDate">+ сегодняшняя дата</button>
         <p class="mini-label">Шрифт</p>
         <div class="fonts" id="fonts" role="radiogroup" aria-label="Шрифт">
           <button type="button" class="font-opt" role="radio" data-font="body" aria-checked="true" style="font-family:var(--font-body);font-size:17px">Иванов И. И.</button>
@@ -186,7 +185,7 @@
         <li><span><b>Откройте договор</b>PDF, который прислал контрагент, или фото подписанного им экземпляра.</span></li>
         <li><span><b>Поставьте подпись</b>Поставьте подпись в разделе «Подписи сторон». Рядом поставьте расшифровку: переключите «Подпись» на «Текст», впишите ФИО, например «Иванов И. И.», выберите шрифт и нажмите «Поставить текст».</span></li>
         <li><span><b>Подпишите каждую страницу</b>Если договор требует подписи на каждом листе, нажмите «Поставить подпись» ещё раз и кликните по следующей странице: подпись встанет туда.</span></li>
-        <li><span><b>Добавьте дату и отправьте</b>Там же, в режиме «Текст», нажмите «+ сегодняшняя дата» или впишите любую дату и нажмите «Поставить текст». Скачайте PDF и отправьте его по почте или в мессенджере.</span></li>
+        <li><span><b>Добавьте дату и отправьте</b>Там же, в режиме «Текст», впишите дату, например «26.10.2026», и нажмите «Поставить текст». Скачайте PDF и отправьте его по почте или в мессенджере.</span></li>
       </ol>
       <h2>Обмен сканами договора</h2>
       <p>Многие компании и самозанятые заключают договоры обменом сканами: одна сторона подписывает и присылает файл, другая подписывает его и отправляет обратно. Чтобы такой договор было проще подтвердить, укажите в нём пункт о том, что стороны признают юридическую силу документов, подписанных и переданных в электронном виде.</p>
@@ -209,7 +208,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=84edaa71"></script>
+<script src="/assets/app.js?v=41898cd7"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
