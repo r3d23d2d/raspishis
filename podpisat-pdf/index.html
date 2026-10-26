@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=d0f0c891">
+<link rel="stylesheet" href="/assets/app.css?v=0bd9f8bc">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -140,10 +140,15 @@
 
     <section class="block" aria-labelledby="h-add">
       <h2 class="step-h" id="h-add"><span class="num" aria-hidden="true">3</span>ФИО и дата</h2>
-      <input class="input" id="fioInput" type="text" placeholder="Иванов И. И." maxlength="60" autocomplete="name" aria-label="ФИО">
-      <div class="add-grid">
-        <button type="button" class="btn" id="addFio">Поставить ФИО</button>
-        <button type="button" class="btn btn-stack" id="addDate">Поставить дату<span class="label" id="todayLabel"></span></button>
+      <label class="mini-label" for="fioInput">ФИО</label>
+      <div class="pair">
+        <input class="input" id="fioInput" type="text" placeholder="Например, Иванов И. И." maxlength="60" autocomplete="name">
+        <button type="button" class="btn" id="addFio">Поставить</button>
+      </div>
+      <label class="mini-label" for="dateInput">Дата</label>
+      <div class="pair">
+        <input class="input" id="dateInput" type="date">
+        <button type="button" class="btn" id="addDate">Поставить</button>
       </div>
     </section>
 
@@ -199,7 +204,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=84063088"></script>
+<script src="/assets/app.js?v=81db6562"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
