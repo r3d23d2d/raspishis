@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css">
+<link rel="stylesheet" href="/assets/app.css?v=77602d0d">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -38,7 +38,7 @@
    "@type": "WebApplication",
    "name": "Распишись",
    "url": "https://raspishis.ru/",
-   "description": "Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
+   "description": "Подпишите PDF, скан или фото документа онлайн: распишитесь, добавьте ФИО и дату и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any",
    "inLanguage": "ru",
@@ -102,30 +102,10 @@
   <aside class="panel">
     <section class="block" aria-labelledby="h-sig">
       <h2 id="h-sig">Подпись</h2>
-      <div class="tabs" role="tablist">
-        <button type="button" role="tab" id="tab-draw" aria-selected="true" data-tab="draw">Нарисовать</button>
-        <button type="button" role="tab" id="tab-type" aria-selected="false" data-tab="type">Напечатать</button>
-        <button type="button" role="tab" id="tab-upload" aria-selected="false" data-tab="upload">Загрузить</button>
-      </div>
-
-      <div class="tabpanel" data-panel="draw">
-        <div class="pad-wrap">
-          <span class="pad-x">×</span>
-          <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
-          <canvas id="pad" aria-label="Поле для подписи"></canvas>
-        </div>
-      </div>
-
-      <div class="tabpanel" data-panel="type" hidden>
-        <label class="field">Фамилия или ФИО
-          <input class="input" id="typedName" type="text" value="Иванов" maxlength="40" autocomplete="name">
-        </label>
-        <div class="fonts" id="fontList" style="margin-top:10px"></div>
-      </div>
-
-      <div class="tabpanel" data-panel="upload" hidden>
-        <button type="button" class="upload-box" id="sigUploadBtn"><span id="sigUploadEmpty">Выбрать фото подписи</span><img id="sigUploadPreview" alt="Загруженная подпись" hidden></button>
-        <p class="hint" style="margin-top:8px">Распишитесь на белом листе и сфотографируйте при хорошем свете. Белый фон уберём автоматически.</p>
+      <div class="pad-wrap">
+        <span class="pad-x">×</span>
+        <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
+        <canvas id="pad" aria-label="Поле для подписи"></canvas>
       </div>
 
       <div class="row spread" id="inkRow">
@@ -144,8 +124,12 @@
         <button type="button" class="btn ghost" id="clearBtn">Очистить</button>
       </div>
 
-      <button type="button" class="btn primary wide" id="placeSig">Поставить на документ</button>
-      <button type="button" class="btn wide" id="downloadSig">Скачать подпись PNG с прозрачным фоном</button>
+      <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
+      <div class="sig-alt">
+        <button type="button" class="btn" id="fioSig" title="Рукописная подпись из фамилии в поле «ФИО»">Подпись из ФИО</button>
+        <button type="button" class="btn" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически">Загрузить фото</button>
+        <button type="button" class="btn" id="downloadSig" title="Скачать нарисованную подпись в PNG с прозрачным фоном">Скачать PNG</button>
+      </div>
     </section>
 
     <section class="block" aria-labelledby="h-saved">
@@ -155,11 +139,13 @@
     </section>
 
     <section class="block" aria-labelledby="h-add">
-      <h2 id="h-add">Добавить на документ</h2>
-      <button type="button" class="btn" id="addDate" style="justify-content:flex-start">Дату <span class="label" id="todayLabel" style="font-family:var(--font-mono)"></span></button>
+      <h2 id="h-add">ФИО и дата</h2>
+      <label class="field" for="fioInput">ФИО
+        <input class="input" id="fioInput" type="text" placeholder="Иванов И. И." maxlength="60" autocomplete="name">
+      </label>
       <div class="add-grid">
-        <input class="input" id="freeText" type="text" placeholder="Расшифровка, должность, «Согласовано»" maxlength="80">
-        <button type="button" class="btn" id="addText">Текст</button>
+        <button type="button" class="btn" id="addFio">Поставить ФИО</button>
+        <button type="button" class="btn btn-stack" id="addDate">Поставить дату<span class="label" id="todayLabel"></span></button>
       </div>
     </section>
 
@@ -175,10 +161,10 @@
       <p class="lead" id="pageLead">Сфотографируйте документ на телефон или откройте скан, поставьте подпись, дату и текст и скачайте результат в PDF.</p>
     </div>
     <div class="empty" id="deskNote">
-      <svg class="empty-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 5H13a4 4 0 0 0-4 4v30a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V16z"/><path d="M28 5v11h11"/><path d="M16 34c3-5 5-6 6-3s2 3 4 0 3-3 6 1"/></svg>
+      <svg class="empty-icon" width="56" height="56" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 5H13a4 4 0 0 0-4 4v30a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V16z"/><path d="M28 5v11h11"/><path d="M16 34c3-5 5-6 6-3s2 3 4 0 3-3 6 1"/></svg>
       <p class="empty-title">Откройте документ, чтобы поставить подпись</p>
       <p class="empty-sub">PDF, скан или фото: JPG, PNG, WEBP. Можно перетащить файл сюда. Документ не загружается на сервер.</p>
-      <button type="button" class="btn primary" id="openBtn2">Открыть документ</button>
+      <button type="button" class="btn primary empty-btn" id="openBtn2">Добавить документ</button>
     </div>
     <div class="pages" id="pages"></div>
   </section>
@@ -190,7 +176,7 @@
       <ol class="steps">
         <li><span><b>Сфотографируйте документ</b>Положите лист на ровную тёмную поверхность и снимайте сверху при хорошем свете. Подойдёт и готовый скан в JPG, PNG или WEBP.</span></li>
         <li><span><b>Откройте фото</b>Нажмите «Открыть документ» и выберите снимок из галереи или файлов.</span></li>
-        <li><span><b>Подпишите</b>Распишитесь пальцем в рамке, нажмите «Поставить на документ» и коснитесь нужного места.</span></li>
+        <li><span><b>Подпишите</b>Распишитесь пальцем в рамке, нажмите «Поставить подпись» и коснитесь нужного места.</span></li>
         <li><span><b>Скачайте PDF</b>Документ сохранится в PDF стандартного размера, его удобно отправить или распечатать.</span></li>
       </ol>
       <h2>Подписать с телефона</h2>
@@ -213,7 +199,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js"></script>
+<script src="/assets/app.js?v=41da7f72"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>

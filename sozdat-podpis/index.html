@@ -6,7 +6,7 @@
 <!-- GitHub Pages не отдаёт свои заголовки, поэтому политика безопасности продублирована здесь -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; worker-src 'self' blob:; connect-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'none'">
 <title>Создать подпись онлайн и скачать PNG с прозрачным фоном | Распишись</title>
-<meta name="description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, напечатайте фамилию рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
+<meta name="description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
 <link rel="canonical" href="https://raspishis.ru/sozdat-podpis/">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#1d3fa8">
@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Распишись">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="Создать подпись онлайн и скачать PNG с прозрачным фоном | Распишись">
-<meta property="og:description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, напечатайте фамилию рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
+<meta property="og:description" content="Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.">
 <meta property="og:url" content="https://raspishis.ru/sozdat-podpis/">
 <meta property="og:image" content="https://raspishis.ru/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css">
+<link rel="stylesheet" href="/assets/app.css?v=77602d0d">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -38,7 +38,7 @@
    "@type": "WebApplication",
    "name": "Распишись",
    "url": "https://raspishis.ru/",
-   "description": "Подпишите PDF, скан или фото документа онлайн: нарисуйте подпись, напечатайте или загрузите её и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
+   "description": "Подпишите PDF, скан или фото документа онлайн: распишитесь, добавьте ФИО и дату и скачайте подписанный PDF. Бесплатно, без регистрации, файл не уходит на сервер.",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any",
    "inLanguage": "ru",
@@ -53,7 +53,7 @@
    "@id": "https://raspishis.ru/sozdat-podpis/",
    "url": "https://raspishis.ru/sozdat-podpis/",
    "name": "Создать подпись онлайн",
-   "description": "Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, напечатайте фамилию рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.",
+   "description": "Генератор подписи онлайн: нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или загрузите фото и скачайте подпись в PNG с прозрачным фоном.",
    "inLanguage": "ru",
    "isPartOf": {
     "@type": "WebSite",
@@ -102,30 +102,10 @@
   <aside class="panel">
     <section class="block" aria-labelledby="h-sig">
       <h2 id="h-sig">Подпись</h2>
-      <div class="tabs" role="tablist">
-        <button type="button" role="tab" id="tab-draw" aria-selected="true" data-tab="draw">Нарисовать</button>
-        <button type="button" role="tab" id="tab-type" aria-selected="false" data-tab="type">Напечатать</button>
-        <button type="button" role="tab" id="tab-upload" aria-selected="false" data-tab="upload">Загрузить</button>
-      </div>
-
-      <div class="tabpanel" data-panel="draw">
-        <div class="pad-wrap">
-          <span class="pad-x">×</span>
-          <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
-          <canvas id="pad" aria-label="Поле для подписи"></canvas>
-        </div>
-      </div>
-
-      <div class="tabpanel" data-panel="type" hidden>
-        <label class="field">Фамилия или ФИО
-          <input class="input" id="typedName" type="text" value="Иванов" maxlength="40" autocomplete="name">
-        </label>
-        <div class="fonts" id="fontList" style="margin-top:10px"></div>
-      </div>
-
-      <div class="tabpanel" data-panel="upload" hidden>
-        <button type="button" class="upload-box" id="sigUploadBtn"><span id="sigUploadEmpty">Выбрать фото подписи</span><img id="sigUploadPreview" alt="Загруженная подпись" hidden></button>
-        <p class="hint" style="margin-top:8px">Распишитесь на белом листе и сфотографируйте при хорошем свете. Белый фон уберём автоматически.</p>
+      <div class="pad-wrap">
+        <span class="pad-x">×</span>
+        <span class="pad-hint" id="padHint">Распишитесь мышью, пальцем или стилусом</span>
+        <canvas id="pad" aria-label="Поле для подписи"></canvas>
       </div>
 
       <div class="row spread" id="inkRow">
@@ -144,8 +124,12 @@
         <button type="button" class="btn ghost" id="clearBtn">Очистить</button>
       </div>
 
-      <button type="button" class="btn primary wide" id="placeSig">Поставить на документ</button>
-      <button type="button" class="btn wide" id="downloadSig">Скачать подпись PNG с прозрачным фоном</button>
+      <button type="button" class="btn primary wide" id="placeSig">Поставить подпись</button>
+      <div class="sig-alt">
+        <button type="button" class="btn" id="fioSig" title="Рукописная подпись из фамилии в поле «ФИО»">Подпись из ФИО</button>
+        <button type="button" class="btn" id="sigUploadBtn" title="Распишитесь на белом листе и сфотографируйте: фон уберётся автоматически">Загрузить фото</button>
+        <button type="button" class="btn" id="downloadSig" title="Скачать нарисованную подпись в PNG с прозрачным фоном">Скачать PNG</button>
+      </div>
     </section>
 
     <section class="block" aria-labelledby="h-saved">
@@ -155,11 +139,13 @@
     </section>
 
     <section class="block" aria-labelledby="h-add">
-      <h2 id="h-add">Добавить на документ</h2>
-      <button type="button" class="btn" id="addDate" style="justify-content:flex-start">Дату <span class="label" id="todayLabel" style="font-family:var(--font-mono)"></span></button>
+      <h2 id="h-add">ФИО и дата</h2>
+      <label class="field" for="fioInput">ФИО
+        <input class="input" id="fioInput" type="text" placeholder="Иванов И. И." maxlength="60" autocomplete="name">
+      </label>
       <div class="add-grid">
-        <input class="input" id="freeText" type="text" placeholder="Расшифровка, должность, «Согласовано»" maxlength="80">
-        <button type="button" class="btn" id="addText">Текст</button>
+        <button type="button" class="btn" id="addFio">Поставить ФИО</button>
+        <button type="button" class="btn btn-stack" id="addDate">Поставить дату<span class="label" id="todayLabel"></span></button>
       </div>
     </section>
 
@@ -172,13 +158,13 @@
     <div class="intro">
       <ol class="crumbs"><li><a href="/">Главная</a></li><li aria-current="page">Создать подпись</li></ol>
       <h1 id="pageH1">Создать подпись онлайн</h1>
-      <p class="lead" id="pageLead">Нарисуйте подпись мышью или пальцем, напечатайте фамилию рукописным шрифтом или сфотографируйте свою подпись. Скачайте её в PNG с прозрачным фоном или сразу поставьте на документ.</p>
+      <p class="lead" id="pageLead">Нарисуйте подпись мышью или пальцем, сделайте её из ФИО рукописным шрифтом или сфотографируйте свою подпись. Скачайте её в PNG с прозрачным фоном или сразу поставьте на документ.</p>
     </div>
     <div class="empty" id="deskNote">
-      <svg class="empty-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 5H13a4 4 0 0 0-4 4v30a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V16z"/><path d="M28 5v11h11"/><path d="M16 34c3-5 5-6 6-3s2 3 4 0 3-3 6 1"/></svg>
+      <svg class="empty-icon" width="56" height="56" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M28 5H13a4 4 0 0 0-4 4v30a4 4 0 0 0 4 4h22a4 4 0 0 0 4-4V16z"/><path d="M28 5v11h11"/><path d="M16 34c3-5 5-6 6-3s2 3 4 0 3-3 6 1"/></svg>
       <p class="empty-title">Откройте документ, чтобы поставить подпись</p>
       <p class="empty-sub">PDF, скан или фото: JPG, PNG, WEBP. Можно перетащить файл сюда. Документ не загружается на сервер.</p>
-      <button type="button" class="btn primary" id="openBtn2">Открыть документ</button>
+      <button type="button" class="btn primary empty-btn" id="openBtn2">Добавить документ</button>
     </div>
     <div class="pages" id="pages"></div>
   </section>
@@ -188,14 +174,14 @@
   <div class="about-inner">
       <h2>Как сделать подпись онлайн</h2>
       <ol class="steps">
-        <li><span><b>Выберите способ</b>«Нарисовать» для подписи от руки, «Напечатать» для фамилии рукописным шрифтом, «Загрузить» для фото подписи на бумаге.</span></li>
+        <li><span><b>Выберите способ</b>Распишитесь в рамке от руки, нажмите «Подпись из ФИО», чтобы получить подпись рукописным шрифтом, или «Загрузить фото» для подписи на бумаге.</span></li>
         <li><span><b>Настройте вид</b>Выберите цвет чернил и толщину линии. Если рисуете пальцем, расписывайтесь крупно: подпись уменьшится без потери качества.</span></li>
-        <li><span><b>Скачайте PNG</b>Нажмите «Скачать подпись PNG с прозрачным фоном». Файл подойдёт для Word, Google Документов, презентаций и электронных писем.</span></li>
+        <li><span><b>Скачайте PNG</b>Нажмите «Скачать PNG». Файл подойдёт для Word, Google Документов, презентаций и электронных писем.</span></li>
       </ol>
       <h2>Подпись с фото: фон убирается автоматически</h2>
       <p>Распишитесь на белом листе и сфотографируйте его при хорошем освещении. Сервис уберёт бумагу и оставит только линии подписи на прозрачном фоне. Так получается самая похожая на настоящую подпись. Таким же способом можно сделать прозрачное изображение печати.</p>
       <h2>Куда вставить готовую подпись</h2>
-      <p>PNG с прозрачным фоном ложится поверх текста и линий без белого прямоугольника. В Word вставьте его через «Вставка → Рисунки» и выберите обтекание «Перед текстом». Для PDF удобнее сразу поставить подпись здесь же: нажмите «Поставить на документ».</p>
+      <p>PNG с прозрачным фоном ложится поверх текста и линий без белого прямоугольника. В Word вставьте его через «Вставка → Рисунки» и выберите обтекание «Перед текстом». Для PDF удобнее сразу поставить подпись здесь же: нажмите «Поставить подпись».</p>
       <h2>Ваш документ остаётся у вас</h2>
       <p>Файл открывается и подписывается прямо в браузере на вашем телефоне или компьютере. Он не загружается на сервер, поэтому никто, кроме вас, его не увидит. Это важно для договоров, паспортных данных и финансовых документов.</p>
   </div>
@@ -214,7 +200,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js"></script>
+<script src="/assets/app.js?v=41da7f72"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
