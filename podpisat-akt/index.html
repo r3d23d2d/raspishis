@@ -27,7 +27,7 @@
 <link rel="preload" href="/assets/fonts/golos-text-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/marck-script-400-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/fonts/fonts.css">
-<link rel="stylesheet" href="/assets/app.css?v=0be864fb">
+<link rel="stylesheet" href="/assets/app.css?v=6689e37a">
 <link rel="prefetch" href="/assets/vendor/pdf-lib.min.js">
 <link rel="prefetch" href="/assets/vendor/pdf.min.js">
 <script type="application/ld+json">
@@ -171,7 +171,8 @@
   </section>
 </main>
 
-<section class="about" aria-label="О сервисе">
+<details class="about" id="about">
+  <summary>О сервисе и как подписать документ</summary>
   <div class="about-inner">
     <div class="intro">
       <ol class="crumbs"><li><a href="/">Главная</a></li><li aria-current="page">Подписать акт</li></ol>
@@ -196,7 +197,7 @@
     <a href="/privacy.html">Политика конфиденциальности</a>
     <span>Шрифты: Golos Text, Marck Script, Caveat, Bad Script, JetBrains Mono (SIL OFL)</span>
   </footer>
-</section>
+</details>
 
 
 <div class="placing-bar" id="placingBar" hidden><span>Нажмите на страницу, куда поставить</span><button type="button" id="cancelPlace">Отмена</button></div>
@@ -205,7 +206,7 @@
 <input type="file" id="fileInput" accept="application/pdf,.pdf,image/png,image/jpeg,image/webp" hidden>
 <input type="file" id="sigFileInput" accept="image/png,image/jpeg,image/webp" hidden>
 
-<script src="/assets/app.js?v=b3c7ce7b"></script>
+<script src="/assets/app.js?v=48ab8d78"></script>
 <script src="/assets/sw-register.js"></script>
 </body>
 </html>
